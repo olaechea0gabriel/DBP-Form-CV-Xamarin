@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace FormCV
+namespace DBP_Cv_Form_ultimo
 {
     public partial class MainPage : ContentPage
     {
