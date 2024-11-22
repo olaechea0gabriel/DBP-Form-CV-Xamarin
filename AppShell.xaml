@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="FormCV.AppShell"
+    x:Class="DBP_Cv_Form_ultimo.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:FormCV"
+    xmlns:local="clr-namespace:DBP_Cv_Form_ultimo"
     Shell.FlyoutBehavior="Disabled"
-    Title="FormCV">
+    Title="DBP_Cv_Form_ultimo">
 
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+    <!-- Página del formulario para CV -->
+    <ShellContent
+        Title="CV Form"
+        ContentTemplate="{DataTemplate local:CVFormPage}"
+        Route="CVFormPage.xaml" />
+    
 
 </Shell>
