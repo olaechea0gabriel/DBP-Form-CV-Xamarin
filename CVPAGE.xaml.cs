@@ -1,21 +1,43 @@
-﻿using Microsoft.Maui.Controls;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace FormCV
+using Microsoft.Maui.Controls;
+namespace DBP_Cv_Form_ultimo;
+
+public partial class CVFormPage : ContentPage
 {
-    public partial class CVPage : ContentPage
+    public CVFormPage()
     {
-        public CVPage(string nombre, string telefono, string correo, string direccion, string experiencia, string formacion, string idiomas, string aptitudes)
-        {
-            InitializeComponent();
+        InitializeComponent();
+    }
 
-            // Asigna los datos a los controles de la interfaz de usuario
-            nombreLabel.Text = nombre;
-            puestoLabel.Text = "Puesto deseado";
-            telefonoLabel.Text = "📞 Teléfono: " + telefono;
-            correoLabel.Text = "📧 Correo: " + correo;
-            direccionLabel.Text = "📍 Dirección: " + direccion;
-            idiomasLabel.Text = "Idiomas: " + idiomas;
-            aptitudesLabel.Text = "Aptitudes y Habilidades: " + aptitudes;
+    private void OnGenerateCVButtonClicked(object sender, EventArgs e)
+    {
+        // Obtener los datos del formulario
+        string name = NameEntry.Text?.Trim();
+        string age = AgeEntry.Text?.Trim();
+        string occupation = OccupationEntry.Text?.Trim();
+        string address = AddressEntry.Text?.Trim();
+
+        // Validar que los campos no estén vacíos
+        if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(age) ||
+            string.IsNullOrWhiteSpace(occupation) || string.IsNullOrWhiteSpace(address))
+        {
+            DisplayAlert("Error", "Por favor, completa todos los campos.", "OK");
+            return;
         }
+
+        // Crear el texto del CV
+        string cvText = $"--- CURRICULUM VITAE ---\n\n" +
+                        $"Nombre: {name}\n" +
+                        $"Edad: {age}\n" +
+                        $"Ocupación: {occupation}\n" +
+                        $"Dirección: {address}\n";
+
+        // Mostrar el CV en la etiqueta
+        CVLabel.Text = cvText;
     }
 }
